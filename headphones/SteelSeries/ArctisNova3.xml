@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<device id="steelseries_arctis_nova_3" name="SteelSeries Arctis Nova 3" category="headphones">
+    <initialize>
+    </initialize>
+
+    <capability id="sidetone" name="Sidetone" usagepage="0xFFC0" usageid="1" interface="4">
+        <initialize>
+        </initialize>
+
+        <ui>
+            <slider id="level_slider" name="Volume" orientation="horizontal" min="0" max="3" step="1"><float>1</float></slider>
+        </ui>
+
+        <save>
+            <command id="set_command" direction="out" type="report" size="64">
+                <int>0x06</int>
+                <int>0x39</int>
+                <ident>level_slider</ident>
+            </command>
+            <command id="set_command" direction="out" type="report" size="64">
+                <int>0x06</int>
+                <int>0x09</int>
+            </command>
+        </save>
+    </capability>
+
+    <capability id="equalizer" name="Equalizer" usagepage="0xFFC0" usageid="1" interface="4">
+        <initialize>
+        </initialize>
+
+        <ui>
+            <slider id="freq64_slider" name="64 Hz" orientation="vertical" min="-6" max="6" step="0.5"><float>0</float></slider>
+            <slider id="freq180_slider" name="180 Hz" orientation="vertical" min="-6" max="6" step="0.5"><float>0</float></slider>
+            <slider id="freq500_slider" name="500 Hz" orientation="vertical" min="-6" max="6" step="0.5"><float>0</float></slider>
+            <slider id="freq1000_slider" name="1 kHz" orientation="vertical" min="-6" max="6" step="0.5"><float>0</float></slider>
+            <slider id="freq3000_slider" name="3 kHz" orientation="vertical" min="-6" max="6" step="0.5"><float>0</float></slider>
+            <slider id="freq11000_slider" name="11 kHz" orientation="vertical" min="-6" max="6" step="0.5"><float>0</float></slider>
+        </ui>
+
+        <save>
+            <command id="set_command" direction="out" type="report" size="64">
+                <int>0x06</int>
+                <int>0x33</int>
+                <add><int>0x14</int><mul><int>2</int><ident>freq64_slider</ident></mul></add>
+                <add><int>0x14</int><mul><int>2</int><ident>freq180_slider</ident></mul></add>
+                <add><int>0x14</int><mul><int>2</int><ident>freq500_slider</ident></mul></add>
+                <add><int>0x14</int><mul><int>2</int><ident>freq1000_slider</ident></mul></add>
+                <add><int>0x14</int><mul><int>2</int><ident>freq3000_slider</ident></mul></add>
+                <add><int>0x14</int><mul><int>2</int><ident>freq11000_slider</ident></mul></add>
+            </command>
+            <command id="set_command" direction="out" type="report" size="64">
+                <int>0x06</int>
+                <int>0x09</int>
+            </command>
+        </save>
+    </capability>
+
+    <capability id="microphone_mute_led_brightness" name="Microphone mute LED brightness" usagepage="0xFFC0" usageid="1" interface="4">
+        <initialize>
+        </initialize>
+
+        <ui>
+            <slider id="level_slider" name="Brightness" orientation="horizontal" min="0" max="3" step="1"><float>2</float></slider>
+        </ui>
+
+        <save>
+            <command id="set_command" direction="out" type="report" size="64">
+                <int>0x06</int>
+                <int>0xAE</int>
+                <ident>level_slider</ident>
+            </command>
+            <command id="set_command" direction="out" type="report" size="64">
+                <int>0x06</int>
+                <int>0x09</int>
+            </command>
+        </save>
+    </capability>
+
+    <capability id="microphone_volume" name="Microphone volume" usagepage="0xFFC0" usageid="1" interface="4">
+        <initialize>
+        </initialize>
+
+        <ui>
+            <slider id="level_slider" name="Volume" orientation="horizontal" min="0" max="10" step="1"><float>7</float></slider>
+        </ui>
+
+        <save>
+            <command id="set_command" direction="out" type="report" size="64">
+                <int>0x06</int>
+                <int>0x37</int>
+                <ident>level_slider</ident>
+            </command>
+            <command id="set_command" direction="out" type="report" size="64">
+                <int>0x06</int>
+                <int>0x09</int>
+            </command>
+        </save>
+    </capability>
+</device>
